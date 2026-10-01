@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Volga Mart – Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Outfit:wght@500;600;700;800&family=Cairo:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0c0a3a;
+  --navy:#17365d;
+  --deep:#10083f;
+  --purple:#56308a;
+  --gold:#efb233;
+  --green:#087f3f;
+  --white:#ffffff;
+  --rule:#b9c0d9;
+  --card:#ffffff;
+  --card-text:#17365d;
+  --shadow:#0a0a14;
+  --font-display:"Dela Gothic One", Impact, "Arial Black", sans-serif;
+  --font-body:"Outfit", "Segoe UI", system-ui, sans-serif;
+  --font-ar:"Cairo", "Segoe UI", Tahoma, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+/* The menu is a fixed brand palette, so dark mode keeps the same tokens */
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --ink:#0c0a3a; --card:#ffffff; --card-text:#17365d; } }
+:root[data-theme="dark"]{ --ink:#0c0a3a; --card:#ffffff; --card-text:#17365d; }
+html{ scroll-padding-top:calc(env(safe-area-inset-top,0px) + 74px); scroll-behavior:smooth; }
+*,*::before,*::after{ box-sizing:inherit; }
+body{
+  margin:0; background:var(--deep); color:var(--white);
+  font-family:var(--font-body); -webkit-text-size-adjust:100%;
+  overflow-x:hidden;
+}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+
+/* ---------- wavy stripe backgrounds (same language as the print menu) ---------- */
+.b-navy{ background-color:#17365d;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='120' viewBox='0 0 220 120'%3E%3Cpath d='M0 28C37-6 73-6 110 28S183 62 220 28' fill='none' stroke='%2356308a' stroke-width='30'/%3E%3Cpath d='M0 88C37 54 73 54 110 88S183 122 220 88' fill='none' stroke='%23efb233' stroke-width='14'/%3E%3C/svg%3E"); }
+.b-swirl{ background-color:#ffffff;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='130' viewBox='0 0 240 130'%3E%3Cpath d='M0 30C40-8 80-8 120 30S200 68 240 30' fill='none' stroke='%2317365d' stroke-width='34'/%3E%3Cpath d='M0 95C40 57 80 57 120 95S200 133 240 95' fill='none' stroke='%2356308a' stroke-width='26'/%3E%3C/svg%3E"); }
+.b-gold{ background-color:#efb233;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='130' viewBox='0 0 240 130'%3E%3Cpath d='M0 30C40-8 80-8 120 30S200 68 240 30' fill='none' stroke='%2326306b' stroke-width='30'/%3E%3Cpath d='M0 95C40 57 80 57 120 95S200 133 240 95' fill='none' stroke='%2356308a' stroke-width='22'/%3E%3C/svg%3E"); }
+.b-purple{ background-color:#56308a;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='120' viewBox='0 0 220 120'%3E%3Cpath d='M0 28C37-6 73-6 110 28S183 62 220 28' fill='none' stroke='%2317365d' stroke-width='30'/%3E%3Cpath d='M0 88C37 54 73 54 110 88S183 122 220 88' fill='none' stroke='%23087f3f' stroke-width='12'/%3E%3C/svg%3E"); }
+.b-stripe{ background-color:#ffffff;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='110' viewBox='0 0 200 110'%3E%3Cpath d='M0 26C33-4 67-4 100 26S167 56 200 26' fill='none' stroke='%2317365d' stroke-width='28'/%3E%3Cpath d='M0 81C33 51 67 51 100 81S167 111 200 81' fill='none' stroke='%2356308a' stroke-width='28'/%3E%3C/svg%3E"); }
+
+/* ---------- hero ---------- */
+.hero{ position:relative; padding:44px 18px 52px; text-align:center; overflow:hidden; }
+.hero .tile{
+  position:relative; z-index:2; display:inline-flex; align-items:stretch;
+  background:#fff; border-radius:22px; border:2px solid var(--shadow);
+  box-shadow:7px 8px 0 var(--shadow); overflow:hidden; max-width:100%;
+}
+.logo{ padding:20px 26px 14px; text-align:left; }
+.logo .word{
+  font-family:var(--font-display); font-size:clamp(44px,13vw,76px); line-height:.9;
+  color:var(--navy); letter-spacing:-.02em; display:block; transform:skewX(-8deg);
+}
+.logo .bar{ display:flex; align-items:center; margin-top:6px; }
+.logo .bar i{ flex:1; height:12px; background:var(--gold); transform:skewX(-20deg); }
+.logo .bar b{ font-family:var(--font-display); font-weight:400; color:var(--gold); font-size:20px; margin-left:8px; }
+.cup{ width:92px; background:#fff; border-left:2px solid var(--shadow); display:grid; place-items:center; }
+.cup svg{ width:64px; height:64px; }
+.hero p{
+  position:relative; z-index:2; margin:22px auto 0; max-width:30ch;
+  font-weight:700; font-size:18px; color:#fff; line-height:1.35;
+}
+.hero p em{ font-style:normal; color:var(--gold); }
+
+/* ---------- sticky nav ---------- */
+.nav{
+  position:sticky; top:0; z-index:50;
+  padding:calc(env(safe-area-inset-top,0px) + 10px) 12px 10px;
+  background:var(--ink); border-bottom:3px solid var(--gold);
+}
+.nav-in{ display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; max-width:1100px; margin:0 auto; -webkit-overflow-scrolling:touch; }
+.nav-in::-webkit-scrollbar{ display:none; }
+.nav a{
+  flex:none; text-decoration:none; color:#fff; font-weight:700; font-size:14px;
+  padding:8px 15px; border-radius:999px; border:2px solid rgba(255,255,255,.28);
+  transition:background .15s, color .15s, border-color .15s; white-space:nowrap;
+}
+.nav a:hover{ border-color:var(--gold); }
+.nav a.on{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
+.nav a:focus-visible, .search input:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
+.search{ max-width:1100px; margin:10px auto 0; }
+.search input{
+  width:100%; font:600 15px var(--font-body); padding:11px 16px; border-radius:999px;
+  border:2px solid rgba(255,255,255,.28); background:rgba(255,255,255,.08); color:#fff;
+}
+.search input::placeholder{ color:rgba(255,255,255,.65); }
+
+/* ---------- bands & cards ---------- */
+.band{ position:relative; padding:64px 16px 72px; overflow:hidden; }
+.stage{ position:relative; z-index:2; max-width:1040px; margin:0 auto; display:grid; gap:56px; grid-template-columns:1fr; justify-items:center; align-items:start; }
+.stage.two{ }
+@media (min-width:860px){
+  .stage.two{ grid-template-columns:1fr 1fr; gap:40px 48px; }
+  .stage .wide{ grid-column:1 / -1; }
+}
+.card{
+  position:relative; width:100%; max-width:520px; background:var(--card); color:var(--card-text);
+  border-radius:28px; border:2px solid var(--shadow); box-shadow:7px 8px 0 var(--shadow);
+  padding:44px 22px 20px;
+}
+.card.hide{ display:none; }
+.pill{
+  position:absolute; left:50%; top:0; transform:translate(-50%,-52%);
+  background:var(--navy); color:#fff; border:2px solid var(--shadow);
+  font-family:var(--font-display); font-weight:400; font-size:19px; letter-spacing:.01em;
+  padding:9px 22px; border-radius:999px; white-space:nowrap; margin:0;
+  display:flex; gap:10px; align-items:center;
+}
+.pill::before,.pill::after{ content:""; width:11px; height:11px; background:currentColor;
+  clip-path:path("M5.5 0C6 4 7 5 11 5.5C7 6 6 7 5.5 11C5 7 4 6 0 5.5C4 5 5 4 5.5 0Z"); }
+.items{ list-style:none; margin:0; padding:0; }
+.items li{
+  display:flex; justify-content:space-between; align-items:baseline; gap:14px;
+  padding:9px 2px 8px; border-bottom:1px solid var(--rule); font-weight:700; font-size:16px; line-height:1.25;
+}
+.items li:last-child{ border-bottom:0; }
+.items .price{ font-variant-numeric:tabular-nums; font-weight:800; flex:none; }
+.tag{ font-size:11px; font-weight:800; color:#c98a00; margin-left:6px; white-space:nowrap; }
+
+/* two-size table (premium coffee) */
+.sizes li{ display:grid; grid-template-columns:1fr 54px 54px; gap:8px; }
+.sizes .price{ text-align:right; }
+.sizes .head{ border-bottom:0; padding-bottom:0; font-size:13px; color:#6b7aa3; font-weight:800; }
+.sizes .head span:not(:first-child){ text-align:right; }
+.sizes .solo{ grid-column:2 / span 2; text-align:right; }
+
+/* add-ons */
+.addon{ max-width:360px; padding-top:34px; }
+.addon h3{ margin:0 0 12px; font-family:var(--font-display); font-weight:400; font-size:30px; line-height:1; color:var(--navy); padding-left:62px; }
+.burst{ position:absolute; left:-30px; top:-34px; width:96px; height:96px; }
+.burst text{ font-family:var(--font-display); font-size:34px; fill:var(--navy); }
+.chips{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; list-style:none; margin:0; padding:0; }
+.chips li{ font-weight:700; font-size:14px; padding:6px 13px; border-radius:999px; background:#eef0f9; border:1.5px solid var(--navy); }
+
+/* Arabic */
+.rtl{ direction:rtl; font-family:var(--font-ar); }
+.rtl .pill{ font-family:var(--font-ar); font-weight:800; font-size:20px; }
+.rtl .items li{ font-size:18px; font-weight:700; }
+.rtl .items li span:first-child{ text-align:right; }
+.box{ text-align:center; }
+.box .lead{ font-family:var(--font-ar); font-weight:800; font-size:24px; margin:0 0 12px; direction:rtl; }
+.box .opts{ display:flex; gap:12px; justify-content:center; }
+.box .opt{ flex:1; background:var(--navy); color:#fff; border-radius:18px; padding:12px 8px; direction:rtl; font-family:var(--font-ar); font-weight:700; }
+.box .opt strong{ display:block; font-family:var(--font-display); font-weight:400; font-size:30px; color:var(--gold); }
+
+/* ---------- stickers ---------- */
+.stk{ position:absolute; z-index:1; pointer-events:none; }
+.stk svg{ width:100%; height:100%; display:block; overflow:visible; }
+.blob{ position:absolute; z-index:1; pointer-events:none; opacity:.95; }
+@media (max-width:700px){ .stk.hm{ display:none; } }
+.bob{ animation:bob 7s ease-in-out infinite; }
+@keyframes bob{ 0%,100%{ transform:translateY(0) rotate(var(--r,0deg)); } 50%{ transform:translateY(-10px) rotate(calc(var(--r,0deg) + 4deg)); } }
+
+.empty{ display:none; text-align:center; padding:60px 20px; font-weight:700; font-size:18px; background:var(--ink); }
+.empty.show{ display:block; }
+footer{ background:var(--ink); text-align:center; padding:34px 18px calc(34px + env(safe-area-inset-bottom,0px)); border-top:3px solid var(--gold); }
+footer b{ font-family:var(--font-display); font-weight:400; font-size:22px; color:var(--gold); }
+footer p{ margin:8px 0 0; font-size:14px; color:rgba(255,255,255,.75); font-weight:600; }
+</style>
+</head>
+<body>
+
+<!-- shared SVG symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="sparkle" viewBox="0 0 24 24"><path d="M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z" fill="#fff"/></symbol>
+    <symbol id="sparkle-gold" viewBox="0 0 24 24"><path d="M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z" fill="#efb233"/></symbol>
+    <symbol id="drop" viewBox="0 0 20 28"><path d="M10 0C10 0 20 12 20 19A10 9 0 0 1 0 19C0 12 10 0 10 0Z"/></symbol>
+    <symbol id="smiley-x" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="#efb233" stroke="#0a0a14" stroke-width="3"/>
+      <path d="M26 30l16 16M42 30L26 46M58 30l16 16M74 30L58 46" stroke="#0a0a14" stroke-width="6" stroke-linecap="round"/>
+      <path d="M26 68c8 12 40 12 48 0" fill="none" stroke="#0a0a14" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="smiley-happy" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="#efb233" stroke="#0a0a14" stroke-width="3"/>
+      <circle cx="35" cy="40" r="5" fill="#0a0a14"/><circle cx="65" cy="40" r="5" fill="#0a0a14"/>
+      <path d="M26 58c8 18 40 18 48 0" fill="none" stroke="#0a0a14" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="eye" viewBox="0 0 120 80">
+      <rect x="2" y="2" width="116" height="76" rx="16" fill="#17365d" stroke="#fff" stroke-width="4"/>
+      <path d="M12 40C32 10 88 10 108 40C88 70 32 70 12 40Z" fill="#fff"/>
+      <circle cx="60" cy="40" r="19" fill="#efb233"/><circle cx="60" cy="40" r="9" fill="#10083f"/><circle cx="65" cy="35" r="4" fill="#fff"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- HERO -->
+<header class="hero b-navy" id="top">
+  <div class="stk bob" style="--r:-12deg;width:54px;height:54px;left:6%;top:22px"><svg><use href="#sparkle"/></svg></div>
+  <div class="stk bob hm" style="--r:10deg;width:96px;height:96px;right:6%;top:20px;animation-delay:-2s"><svg><use href="#smiley-x"/></svg></div>
+  <div class="stk hm" style="width:120px;height:80px;left:5%;bottom:20px;transform:rotate(-8deg)"><svg><use href="#eye"/></svg></div>
+  <div class="stk" style="width:34px;height:34px;right:14%;bottom:26px"><svg><use href="#sparkle-gold"/></svg></div>
+
+  <div class="tile">
+    <div class="logo">
+      <span class="word">VOLGA</span>
+      <div class="bar"><i></i><b>MART</b></div>
+    </div>
+    <div class="cup" aria-hidden="true">
+      <svg viewBox="0 0 64 64"><path d="M10 28h34v10a16 16 0 0 1-16 16h-2A16 16 0 0 1 10 38Z" fill="#fff" stroke="#3a2a1a" stroke-width="2"/><path d="M12 29c6-4 12 3 18-2s10 0 14 1" fill="#7a4b1c" stroke="#3a2a1a" stroke-width="2"/><path d="M44 31h4a6 6 0 0 1 0 12h-5" fill="none" stroke="#efb233" stroke-width="4"/><path d="M26 6c-3 4 3 6 0 10M34 4c-3 4 3 6 0 10" fill="none" stroke="#3a2a1a" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+  <p>Coffee, matcha, juices and bites. <em>Take a seat and pick something good.</em></p>
+</header>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Menu sections">
+  <div class="nav-in" id="navlinks">
+    <a href="#coffee">Coffee</a>
+    <a href="#matcha">Matcha</a>
+    <a href="#iced">Iced &amp; Shakes</a>
+    <a href="#juice">Juice</a>
+    <a href="#bites">Sandwiches</a>
+    <a href="#desserts">Desserts</a>
+    <a href="#hot">Hot drinks</a>
+  </div>
+  <div class="search"><input id="q" type="search" placeholder="Search the menu" aria-label="Search the menu" autocomplete="off"></div>
+</nav>
+
+<!-- COFFEE -->
+<section class="band b-navy" id="coffee">
+  <div class="blob" style="width:260px;height:260px;border-radius:50% 40% 60% 45%;background:var(--gold);left:-110px;top:-60px;opacity:.9"></div>
+  <div class="blob" style="width:200px;height:300px;border-radius:50%;background:#56308a;right:-80px;bottom:-60px"></div>
+  <div class="stk bob hm" style="--r:-6deg;width:84px;height:84px;right:7%;top:40px"><svg><use href="#smiley-happy"/></svg></div>
+  <div class="stk hm" style="width:40px;height:40px;left:4%;bottom:90px"><svg><use href="#sparkle"/></svg></div>
+  <div class="stage two">
+    <div class="card" data-card>
+      <h2 class="pill">Premium Coffee</h2>
+      <ul class="items sizes">
+        <li class="head"><span></span><span>M</span><span>L</span></li>
+        <li><span>Americano</span><span class="price">85</span><span class="price">105</span></li>
+        <li><span>Cappuccino</span><span class="price">100</span><span class="price">110</span></li>
+        <li><span>Espresso</span><span class="price">75</span><span class="price">85</span></li>
+        <li><span>Latte</span><span class="price">95</span><span class="price">105</span></li>
+        <li><span>Lotus Latte</span><span class="price">120</span><span class="price">130</span></li>
+        <li><span>Macchiato</span><span class="price">85</span><span class="price">95</span></li>
+        <li><span>Macchiato Caramel</span><span class="price">95</span><span class="price">105</span></li>
+        <li><span>Mocha</span><span class="price">110</span><span class="price">115</span></li>
+        <li><span>Spanish Latte</span><span class="price">95</span><span class="price">110</span></li>
+        <li><span>Flat White</span><span class="price solo">120</span></li>
+      </ul>
+    </div>
+    <div style="display:grid;gap:56px;width:100%;justify-items:center">
+      <div class="card" data-card>
+        <h2 class="pill">Turkish Coffee</h2>
+        <ul class="items">
+          <li><span>Turkish Coffee Single</span><span class="price">75</span></li>
+          <li><span>Turkish Coffee Double</span><span class="price">85</span></li>
+          <li><span>French Coffee</span><span class="price">85</span></li>
+          <li><span>Hazelnut Coffee</span><span class="price">85</span></li>
+        </ul>
+      </div>
+      <div class="card addon" data-card>
+        <svg class="burst" viewBox="0 0 100 100" aria-hidden="true"><polygon class="starpoly" fill="#efb233" stroke="#0a0a14" stroke-width="2"/><text x="50" y="62" text-anchor="middle">25</text></svg>
+        <h3>ADD ONS</h3>
+        <ul class="chips">
+          <li>Chocolate</li><li>Caramel</li><li>Vanilla</li><li>Lotus</li><li>Milk</li><li>Shot</li><li>Whipped cream</li><li>Coconut milk</li><li>Cloud milk foam</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATCHA -->
+<section class="band b-purple" id="matcha">
+  <div class="blob" style="width:240px;height:240px;border-radius:45% 55% 50% 50%;background:var(--green);right:-90px;top:10px"></div>
+  <div class="blob" style="width:220px;height:220px;border-radius:50%;background:var(--gold);left:-100px;bottom:-70px"></div>
+  <div class="stk bob hm" style="--r:8deg;width:110px;height:74px;left:7%;top:50px"><svg><use href="#eye"/></svg></div>
+  <div class="stk hm" style="width:44px;height:44px;right:9%;bottom:60px"><svg><use href="#sparkle"/></svg></div>
+  <div class="stage">
+    <div class="card" data-card>
+      <h2 class="pill">Matcha</h2>
+      <ul class="items">
+        <li><span>Iced pistachio matcha <span class="tag">cold foam</span></span><span class="price">195</span></li>
+        <li><span>Iced strawberry matcha <span class="tag">cold foam</span></span><span class="price">195</span></li>
+        <li><span>Coconut matcha latte</span><span class="price">165</span></li>
+        <li><span>White matcha latte</span><span class="price">155</span></li>
+        <li><span>Vanilla matcha latte</span><span class="price">155</span></li>
+        <li><span>Ice caramel matcha</span><span class="price">165</span></li>
+        <li><span>Ice pistachio matcha</span><span class="price">175</span></li>
+        <li><span>Ice Spanish matcha</span><span class="price">165</span></li>
+        <li><span>Iced strawberry matcha</span><span class="price">165</span></li>
+        <li><span>Iced honey matcha</span><span class="price">145</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ICED + MILKSHAKES -->
+<section class="band b-swirl" id="iced">
+  <div class="stk bob hm" style="--r:-10deg;width:46px;height:46px;left:5%;top:40px"><svg><use href="#sparkle-gold"/></svg></div>
+  <div class="stk hm" style="width:90px;height:90px;right:5%;bottom:40px;transform:rotate(12deg)"><svg><use href="#smiley-x"/></svg></div>
+  <div class="stage two">
+    <div class="card" data-card>
+      <h2 class="pill">Iced Coffee / Frappe</h2>
+      <ul class="items">
+        <li><span>Espresso frappe</span><span class="price">120</span></li>
+        <li><span>Caramel frappe</span><span class="price">120</span></li>
+        <li><span>Chocolate frappe</span><span class="price">120</span></li>
+        <li><span>Lotus frappe</span><span class="price">120</span></li>
+        <li><span>Latte frappe</span><span class="price">120</span></li>
+        <li><span>Oreo frappe</span><span class="price">120</span></li>
+        <li><span>Ice latte</span><span class="price">105</span></li>
+        <li><span>Iced mocha</span><span class="price">105</span></li>
+        <li><span>Ice caramel macchiato</span><span class="price">120</span></li>
+        <li><span>Ice Spanish latte</span><span class="price">120</span></li>
+        <li><span>Ice caramel macchiato <span class="tag">cold foam</span></span><span class="price">130</span></li>
+        <li><span>Ice mocha <span class="tag">cold foam</span></span><span class="price">130</span></li>
+      </ul>
+    </div>
+    <div style="display:grid;gap:56px;width:100%;justify-items:center">
+      <div class="card" data-card>
+        <h2 class="pill">Milkshakes (non-coffee)</h2>
+        <ul class="items">
+          <li><span>Milkshake chocolate</span><span class="price">120</span></li>
+          <li><span>Milkshake caramel</span><span class="price">110</span></li>
+          <li><span>Milkshake Lotus</span><span class="price">140</span></li>
+          <li><span>Milkshake Oreo</span><span class="price">140</span></li>
+        </ul>
+      </div>
+      <div class="card addon" data-card>
+        <svg class="burst" viewBox="0 0 100 100" aria-hidden="true"><polygon class="starpoly" fill="#efb233" stroke="#0a0a14" stroke-width="2"/><text x="50" y="62" text-anchor="middle">25</text></svg>
+        <h3>ADD ONS</h3>
+        <ul class="chips">
+          <li>Chocolate</li><li>Caramel</li><li>Vanilla</li><li>Lotus</li><li>Milk</li><li>Shot</li><li>Whipped cream</li><li>Coconut milk</li><li>Cloud milk foam</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JUICE + SUNSHINE -->
+<section class="band b-navy" id="juice">
+  <div class="blob" style="width:180px;height:180px;border-radius:50%;background:var(--gold);left:50%;top:-90px;margin-left:-90px"></div>
+  <div class="stk bob hm" style="--r:6deg;width:96px;height:96px;right:6%;bottom:50px"><svg><use href="#smiley-x"/></svg></div>
+  <div class="stk hm" style="width:40px;height:40px;left:6%;top:70px"><svg><use href="#sparkle"/></svg></div>
+  <div class="stage two">
+    <div class="card" data-card>
+      <h2 class="pill">Fresh Juice</h2>
+      <ul class="items">
+        <li><span>Volga Fresh Mango</span><span class="price">110</span></li>
+        <li><span>Volga Fresh Orange</span><span class="price">98</span></li>
+        <li><span>Volga Fresh Strawberry</span><span class="price">98</span></li>
+        <li><span>Volga Fresh Guava</span><span class="price">88</span></li>
+        <li><span>Volga Cocktail</span><span class="price">105</span></li>
+        <li><span>Guava &amp; Milk</span><span class="price">88</span></li>
+        <li><span>Strawberry &amp; Milk</span><span class="price">98</span></li>
+        <li><span>Fresh Lemon Juice</span><span class="price">98</span></li>
+        <li><span>Banana &amp; Milk Fresh</span><span class="price">88</span></li>
+      </ul>
+    </div>
+    <div class="card" data-card>
+      <h2 class="pill">Sunshine</h2>
+      <ul class="items">
+        <li><span>Blueberry blast</span><span class="price">98</span></li>
+        <li><span>Cherry fizz</span><span class="price">98</span></li>
+        <li><span>Lemon splash</span><span class="price">98</span></li>
+        <li><span>Raspberry lemonade</span><span class="price">98</span></li>
+        <li><span>Kiwi breeze</span><span class="price">98</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SANDWICHES (Arabic) -->
+<section class="band b-gold" id="bites">
+  <div class="blob" style="width:300px;height:300px;border-radius:50%;background:#17365d;left:50%;top:50%;margin:-150px 0 0 -150px;opacity:.55"></div>
+  <div class="stk bob hm" style="--r:-8deg;width:100px;height:100px;left:4%;top:30px"><svg><use href="#smiley-x"/></svg></div>
+  <div class="stk hm" style="width:44px;height:44px;right:7%;top:60px"><svg><use href="#sparkle"/></svg></div>
+  <div class="stage two">
+    <div class="card box rtl wide" data-card style="max-width:620px">
+      <h2 class="pill">البوكسات</h2>
+      <p class="lead">بوكس ميكس من اختيارك</p>
+      <div class="opts">
+        <div class="opt"><strong>200</strong>٤ سندوتشات</div>
+        <div class="opt"><strong>400</strong>٨ سندوتشات</div>
+      </div>
+    </div>
+    <div class="card rtl" data-card>
+      <h2 class="pill">السندوتشات</h2>
+      <ul class="items">
+        <li><span>كبدة إسكندراني</span><span class="price">60</span></li>
+        <li><span>سجق إسكندراني</span><span class="price">60</span></li>
+        <li><span>سجق مشوي</span><span class="price">60</span></li>
+        <li><span>سكلانس</span><span class="price">35</span></li>
+      </ul>
+    </div>
+    <div class="card rtl" data-card>
+      <h2 class="pill">أطباق جانبية</h2>
+      <ul class="items">
+        <li><span>بطاطس</span><span class="price">65</span></li>
+        <li><span>مخلل</span><span class="price">15</span></li>
+        <li><span>طحينة</span><span class="price">15</span></li>
+        <li><span>سلطة متبلة</span><span class="price">20</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DESSERTS -->
+<section class="band b-stripe" id="desserts">
+  <div class="stk bob hm" style="--r:-6deg;width:90px;height:90px;right:6%;top:40px"><svg><use href="#smiley-happy"/></svg></div>
+  <div class="stk hm" style="width:46px;height:46px;left:6%;bottom:60px"><svg><use href="#sparkle-gold"/></svg></div>
+  <div class="stage">
+    <div class="card" data-card>
+      <h2 class="pill">Desserts</h2>
+      <ul class="items">
+        <li><span>Cheese Cake</span><span class="price">70</span></li>
+        <li><span>Chocolate Fudge Cake</span><span class="price">65</span></li>
+        <li><span>Honey Cake</span><span class="price">99</span></li>
+        <li><span>Red Velvet Cake</span><span class="price">99</span></li>
+        <li><span>Molten Cake</span><span class="price">110</span></li>
+        <li><span>Brownies Cake</span><span class="price">65</span></li>
+        <li><span>Single Waffle</span><span class="price">75</span></li>
+        <li><span>Double Waffle</span><span class="price">125</span></li>
+        <li><span>Pancake S</span><span class="price">75</span></li>
+        <li><span>Pancake D</span><span class="price">110</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOT -->
+<section class="band b-gold" id="hot">
+  <div class="blob" style="width:240px;height:240px;border-radius:50%;background:#56308a;right:-80px;top:-60px"></div>
+  <div class="blob" style="width:200px;height:200px;border-radius:50%;background:#17365d;left:-80px;bottom:-60px"></div>
+  <div class="stk bob hm" style="--r:5deg;width:60px;height:60px;left:8%;top:40px"><svg><use href="#sparkle"/></svg></div>
+  <div class="stage two">
+    <div class="card" data-card>
+      <h2 class="pill">Hot Beverages</h2>
+      <ul class="items">
+        <li><span>Volga Tea</span><span class="price">60</span></li>
+        <li><span>Flavoured tea</span><span class="price">60</span></li>
+        <li><span>Hot chocolate</span><span class="price">105</span></li>
+        <li><span>Hot cider</span><span class="price">85</span></li>
+      </ul>
+    </div>
+    <div class="card" data-card>
+      <h2 class="pill">Shaabiyat</h2>
+      <ul class="items">
+        <li><span>Sahlab</span><span class="price">85</span></li>
+        <li><span>Hummus El Sham</span><span class="price">85</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="empty" id="empty">Nothing matches that search. Try a shorter word.</div>
+
+<footer>
+  <b>VOLGA MART</b>
+  <p>Prices are shown as listed on the printed menu.</p>
+</footer>
+
+<script>
+// starburst polygons for the "25 add ons" badges
+document.querySelectorAll('.starpoly').forEach(function(p){
+  var pts=[], n=12;
+  for(var i=0;i<n*2;i++){
+    var a=Math.PI*i/n - Math.PI/2, r=(i%2?34:48);
+    pts.push((50+r*Math.cos(a)).toFixed(1)+','+(50+r*Math.sin(a)).toFixed(1));
+  }
+  p.setAttribute('points',pts.join(' '));
+});
+
+// nav highlight while scrolling
+(function(){
+  var links=[].slice.call(document.querySelectorAll('#navlinks a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if(!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var i=secs.indexOf(e.target);
+        links.forEach(function(l,j){ l.classList.toggle('on', i===j); });
+        links[i].scrollIntoView({inline:'center',block:'nearest'});
+      }
+    });
+  },{rootMargin:'-35% 0px -55% 0px'});
+  secs.forEach(function(s){ if(s) io.observe(s); });
+})();
+
+// search: hides rows that don't match, and cards/sections that end up empty
+(function(){
+  var q=document.getElementById('q'), empty=document.getElementById('empty');
+  var cards=[].slice.call(document.querySelectorAll('[data-card]'));
+  var bands=[].slice.call(document.querySelectorAll('.band'));
+  function run(){
+    var t=q.value.trim().toLowerCase(), shown=0;
+    cards.forEach(function(c){
+      var rows=[].slice.call(c.querySelectorAll('.items li:not(.head), .chips li, .opt'));
+      if(!t){ c.classList.remove('hide'); rows.forEach(function(r){ r.style.display=''; }); return; }
+      var titleHit=(c.querySelector('.pill')||{textContent:''}).textContent.toLowerCase().indexOf(t)>-1;
+      var any=false;
+      rows.forEach(function(r){
+        var hit=titleHit||r.textContent.toLowerCase().indexOf(t)>-1;
+        r.style.display=hit?'':'none'; if(hit) any=true;
+      });
+      c.classList.toggle('hide',!any);
+    });
+    bands.forEach(function(b){
+      var vis=b.querySelectorAll('[data-card]:not(.hide)').length;
+      b.style.display=vis?'':'none'; shown+=vis;
+    });
+    empty.classList.toggle('show', !!t && shown===0);
+  }
+  q.addEventListener('input',run);
+})();
+</script>
+</body>
+</html>
